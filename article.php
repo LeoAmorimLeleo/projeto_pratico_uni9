@@ -12,25 +12,25 @@
         <link rel="icon" href="./img/icon.png" />
         <title>Food Delivery Landing Page</title>
     </head>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./index.html"><img src="./img/logo.png"></a>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./index.php"><img src="./img/logo.png"></a>
         <button
         class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
+                    <li class="nav-item active"> <a class="nav-link" href="./index.php">Bem-Vindo<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
-                    </li>
-                    
-                     <li class="nav-item"> <a class="nav-link" href="./article.jsp">Historia</a>
+                    <li class="nav-item"> <a class="nav-link" href="./index.php#menu">Menu</a>
                     </li>
                     
-                    <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
+                     <li class="nav-item"> <a class="nav-link" href="./article.php">Historia</a>
                     </li>
                     
-                    <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
+                    <li class="nav-item"> <a class="nav-link" href="./login.php">Login</a>
+                    </li>
+                    
+                    <li class="nav-item"> <a class="nav-link" href="./registrar.php">Registrar-se</a>
                     </li>
                     
                

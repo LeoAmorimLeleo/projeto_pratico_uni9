@@ -10,25 +10,26 @@
         <link rel="stylesheet" href="./css/style.css" />
         <script src="./js/jquery.min.js"></script>
         <link rel="icon" href="./img/icon.png" />
-        <title>Uni9 Delivery - Cadastro</title>
+        <title>Uni9 Delivery - Login</title>
     </head>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./index.html"><img src="./img/logo3.png"></a>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./index.php"><img src="./img/logo3.png"></a>
         <button
         class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
+                            <li class="nav-item active"> <a class="nav-link" href="./index.php">Bem-Vindo<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
-                    </li>
-              
-                    
-                    <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
+                    <li class="nav-item"> <a class="nav-link" href="./index.php#menu">Menu</a>
                     </li>
                     
-                    <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
+                     
+                    
+                    <li class="nav-item"> <a class="nav-link" href="./login.php">Login</a>
+                    </li>
+                    
+                    <li class="nav-item"> <a class="nav-link" href="./registrar.php">Registrar-se</a>
                     </li>
               
             </div>
@@ -51,44 +52,21 @@
                 <div class="col-md-6 p-0 h-md-100 loginarea">
                     <div class="d-md-flex align-items-center h-md-100 p-3 justify-content-center">
                         <form>
-                             <h3 class="mb-4 text-center">Registre-se</h3>
+                             <h3 class="mb-4 text-center">Entrar</h3>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" id="nome" aria-describedby="nome"
-                                placeholder="Nome" required="">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="sobrenome"
-                                placeholder="Sobrenome" required="">
-                            </div>
-                             
-                              <div class="form-group">
-                                <input type="password" class="form-control" id="senha1"
-                                placeholder="Senha" required="">
-                            </div>
-                             
-                              <div class="form-group">
-                                <input type="password" class="form-control" id="senha2"
-                                placeholder="Confirme sua senha" required="">
-                            </div>
-                             
-                             <div class="form-group">
-                                <input type="text" class="form-control" id="celular" aria-describedby="celular"
-                                placeholder="(DDD)Celular" required="">
-                            </div>
-                             
-                             <div class="form-group">
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                 placeholder="E-mail" required="">
                             </div>
-                             
-                             
-                             
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Senha" required="">
+                            </div>
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoções via e-mail?</label>
+                                <label class="form-check-label small text-muted" for="exampleCheck1">Manter conectado!</label>
                             </div>
-                            <button type="submit" class="btn btn-dark btn-round btn-block">Registrar</button> <small class="d-block mt-4 text-center"><a class="text-gray" href="login.jsp">Já tem conta?</a></small>
+                            <button type="submit" class="btn btn-dark btn-round btn-block">Entrar</button> <small class="d-block mt-4 text-center"><a class="text-gray" href="#">Esqueceu sua senha?</a></small>
 
                         </form>
                     </div>

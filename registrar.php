@@ -12,23 +12,23 @@
         <link rel="icon" href="./img/icon.png" />
         <title>Uni9 Delivery - Cadastro</title>
     </head>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./index.html"><img src="./img/logo3.png"></a>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./index.php"><img src="./img/logo3.png"></a>
         <button
         class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
+                            <li class="nav-item active"> <a class="nav-link" href="./index.php">Bem-Vindo<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
+                    <li class="nav-item"> <a class="nav-link" href="./index.php#menu">Menu</a>
                     </li>
               
                     
-                    <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
+                    <li class="nav-item"> <a class="nav-link" href="./login.php">Login</a>
                     </li>
                     
-                    <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
+                    <li class="nav-item"> <a class="nav-link" href="./registrar.php">Registrar-se</a>
                     </li>
               
             </div>
@@ -88,7 +88,7 @@
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoções via e-mail?</label>
                             </div>
-                            <button type="submit" class="btn btn-dark btn-round btn-block">Registrar</button> <small class="d-block mt-4 text-center"><a class="text-gray" href="login.jsp">Já tem conta?</a></small>
+                            <button type="submit" class="btn btn-dark btn-round btn-block">Registrar</button> <small class="d-block mt-4 text-center"><a class="text-gray" href="login.php">Já tem conta?</a></small>
 
                         </form>
                     </div>
