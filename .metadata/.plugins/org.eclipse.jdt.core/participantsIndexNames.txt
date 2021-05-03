@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-D:\projeto_pratico_uni9\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3523768030.index
-\pi\src\main\java
-D:\projeto_pratico_uni9\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3632380487.index
-\pizzaria\src\main\java
-D:\projeto_pratico_uni9\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3016521410.index
-\pizzaria\src\main\java
