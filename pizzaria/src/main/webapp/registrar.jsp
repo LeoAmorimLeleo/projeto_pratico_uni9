@@ -9,7 +9,6 @@
         <script src="./js/jquery.min.js"></script>
         <link rel="icon" href="./img/icon.png" />
         <title>Uni9 Delivery - Cadastro</title>
-<<<<<<< HEAD:pizzaria/src/main/webapp/registrar.jsp
     </head>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./index.jsp"><img src="./img/logo3.png"></a>
         <button
@@ -32,12 +31,8 @@
               
             </div>
     </nav>
-    
-=======
     </head>     
->>>>>>> 2081a57a64e6e9512104d4273e02217355d14438:registrar.php
     <body>
-        <?php include './includes/nav.php' ?>
         <div class="maincontent pt-0 pb-0">
             <div class="d-md-flex h-md-100 align-items-center">
                 <div class="col-md-6 p-0 h-md-100">
@@ -92,7 +87,6 @@
                 </div>
             </div>
         </div>
-        <?php include './includes/footer.php';?>  
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>

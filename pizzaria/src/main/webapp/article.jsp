@@ -11,7 +11,6 @@
         <title>Uni9 Delivery de Pizza</title>
     </head>    
     <body>
-        <?php include './includes/nav.php' ?>
         <div class="maincontent">
             <div class="container">
                 <div class="row justify-content-center">
@@ -42,7 +41,6 @@
                 </div>
             </div>
         </div>
-        <?php include './includes/footer.php';?>  
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
