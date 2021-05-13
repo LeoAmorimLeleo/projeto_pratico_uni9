@@ -13,17 +13,7 @@ String celular = request.getParameter("celular");
 String email  = request.getParameter("email");
 
 try{
-	Connection con = new ConnectionFactory();
-	con.ConectaMySql();
 	
-	String sql = "insert into TB_Cliente(nome) value(?)";
-
-	PreparedStatement stmt = con.prepareStatement(sql);
-	stmt.setString(1, nome);
-	stmt.execute();
-	stmt.close();
-	con.close();
-
 }
 catch(Exception e){
 	out.print("Erro" + e);
