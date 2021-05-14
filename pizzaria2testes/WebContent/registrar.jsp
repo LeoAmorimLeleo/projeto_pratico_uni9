@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="ISO-8859-1" import="java.sql.*" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">    
     <head>
@@ -49,35 +50,35 @@
                 </div>
                 <div class="col-md-6 p-0 h-md-100 loginarea">
                     <div class="d-md-flex align-items-center h-md-100 p-3 justify-content-center">
-                        <form name="registrar" action="cadastro.jsp" method="POST">
+                        <form action="UsrServlet" method="POST">
                             <h3 class="mb-4 text-center">Registre-se</h3>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="nome" aria-describedby="nome"
+                                <input name="nome" type="text" class="form-control" id="nome" aria-describedby="nome"
                                 placeholder="Nome" required="">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="sobrenome"
+                                <input name="sobrenome" type="text" class="form-control" id="sobrenome"
                                 placeholder="Sobrenome" required="">
                             </div>                             
                               <div class="form-group">
-                                <input type="password" class="form-control" name="senha1" id="senha1"
+                                <input name="senha1" type="password" class="form-control" id="senha1"
                                 placeholder="Senha" required="">
                             </div>                             
                             <div class="form-group">
-                                <input type="password" class="form-control" name="senha2" id="senha2"
+                                <input name="senha2" type="password" class="form-control"  id="senha2"
                                 placeholder="Confirme sua senha" required="">
                             </div>                             
                              <div class="form-group">
-                                <input type="text" class="form-control" name="celular" id="celular" aria-describedby="celular"
+                                <input name="celular" type="text" class="form-control"  id="celular" aria-describedby="celular"
                                 placeholder="(DDD)Celular" required="">
                             </div>                             
                              <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
+                                <input name="email" type="email" class="form-control"  id="email" aria-describedby="emailHelp"
                                 placeholder="E-mail" required="">
                             </div> 
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoÃ§Ãµes via e-mail?</label>
+                                <input name="confirmar" type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoções via e-mail?</label>
                             </div>
                             <button type="submit" class="btn btn-dark btn-round btn-block">Registrar</button> 
                             <small class="d-block mt-4 text-center">
