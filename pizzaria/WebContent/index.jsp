@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
         <a class="navbar-brand" href="./index.jsp">
-            <img src="img/logo-pizzaria.png">
+            <img src="img/logo.png">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
