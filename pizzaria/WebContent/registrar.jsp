@@ -48,39 +48,39 @@
                 </div>
                 <div class="col-md-6 p-0 h-md-100 loginarea">
                     <div class="d-md-flex align-items-center h-md-100 p-3 justify-content-center">
-                        <form>
+                         <form action="UsrServlet" method="GET">
                             <h3 class="mb-4 text-center">Registre-se</h3>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="nome" aria-describedby="nome"
+                                <input name="nome" type="text" class="form-control" id="nome" aria-describedby="nome"
                                 placeholder="Nome" required="">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="sobrenome"
+                                <input name="sobrenome" type="text" class="form-control" id="sobrenome"
                                 placeholder="Sobrenome" required="">
                             </div>                             
                               <div class="form-group">
-                                <input type="password" class="form-control" id="senha1"
+                                <input name="senha1" type="password" class="form-control" id="senha1"
                                 placeholder="Senha" required="">
                             </div>                             
                             <div class="form-group">
-                                <input type="password" class="form-control" id="senha2"
+                                <input name="senha2" type="password" class="form-control"  id="senha2"
                                 placeholder="Confirme sua senha" required="">
                             </div>                             
                              <div class="form-group">
-                                <input type="text" class="form-control" id="celular" aria-describedby="celular"
+                                <input name="celular" type="text" class="form-control"  id="celular" aria-describedby="celular"
                                 placeholder="(DDD)Celular" required="">
                             </div>                             
                              <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                <input name="email" type="email" class="form-control"  id="email" aria-describedby="emailHelp"
                                 placeholder="E-mail" required="">
                             </div> 
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoÃ§Ãµes via e-mail?</label>
+                                <input name="confirmar" type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoções via e-mail?</label>
                             </div>
-                            <button type="submit" class="btn btn-dark btn-round btn-block">Registrar</button> 
+                            <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Registrar</button> 
                             <small class="d-block mt-4 text-center">
-                                <a class="text-gray" href="login.php">JÃ¡ tem conta?</a>
+                                <a class="text-gray" href="login.jsp">Já tem conta?</a>
                             </small>
                         </form>
                     </div>
@@ -91,6 +91,31 @@
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             AOS.init();
+            
+            function salvar_dados(){        	
+                
+                var camponome = document.getElementById("nome").value;
+                var camposobrenome = document.getElementById("sobrenome").value;
+                var camposenha1 = document.getElementById("senha1").value;
+                var camposenha2 = document.getElementById("senha2").value;
+                var campocelular = document.getElementById("celular").value;
+                var campoemail = document.getElementById("email").value;
+                
+               
+                var json = {"nome":camponome,"sobrenome":camposobrenome,"celular":campocelular,"email":campoemail,"senha":camposenha1};
+                                 
+                $.ajax({
+                    url:"UsrServlet",
+                    data: json,
+                    type: "post",
+                    success: function(resp){
+                    	console.log(resp);
+                    	alert(resp);
+                    	var vetor_json = JSON.parse(resp);
+                    	alert(vetor_json[0].msg);
+                    }
+                });            
+            }             
         </script>
         <script src="js/custom-general.js"></script>
     </body>

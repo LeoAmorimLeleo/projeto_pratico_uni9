@@ -32,12 +32,10 @@ public class UsrServlet extends HttpServlet {
 		UsuarioBean usuarioBean = new UsuarioBean();
 		
 		usuarioBean.setNome(request.getParameter("nome"));
-		usuarioBean.setEmail(request.getParameter("sobrenome"));
-		usuarioBean.setSenha1(request.getParameter("senha1"));
-		usuarioBean.setSenha2(request.getParameter("senha2"));
+		usuarioBean.setSobrenome(request.getParameter("sobrenome"));
 		usuarioBean.setCelular(request.getParameter("celular"));
 		usuarioBean.setEmail(request.getParameter("email"));
-		usuarioBean.setConfirmar(request.getParameter("confirmar"));
+		usuarioBean.setSenha(request.getParameter("senha"));
 		
 		
 				
@@ -47,7 +45,7 @@ public class UsrServlet extends HttpServlet {
 			response.getWriter().append("Dados inseridos com sucesso!");
 		} catch (Exception e) {			
 			e.printStackTrace();
-			response.getWriter().append("Ocorreu o seguinte erro: " + e.getMessage());
+			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());
 		}
 	}
 	
