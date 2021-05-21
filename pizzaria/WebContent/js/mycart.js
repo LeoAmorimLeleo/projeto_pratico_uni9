@@ -212,7 +212,7 @@
         '<td><strong id="' + idGrandTotal + '">$</strong></td>' +
         '<td></td>' +
         '</tr>'
-        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Your cart is empty</div>'
+        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Seu carrinho está vazio</div>'
       );
 
       var discountPrice = options.getDiscountPrice(products);
