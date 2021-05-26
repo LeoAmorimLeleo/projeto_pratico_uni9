@@ -7,6 +7,6 @@
 <title>Endereço de Entrega</title>
 </head>
 <body>
-
+	
 </body>
 </html>
