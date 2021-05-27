@@ -176,7 +176,8 @@
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>' +
-        '<button type="button" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</button>' +
+        '<a href="./endereco_entrega.jsp" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</a>' +
+        //'<button type="button" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -212,7 +213,7 @@
         '<td><strong id="' + idGrandTotal + '">$</strong></td>' +
         '<td></td>' +
         '</tr>'
-        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Your cart is empty</div>'
+        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Seu carrinho está vazio</div>'
       );
 
       var discountPrice = options.getDiscountPrice(products);

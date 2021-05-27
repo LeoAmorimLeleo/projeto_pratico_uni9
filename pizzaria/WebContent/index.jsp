@@ -108,7 +108,7 @@
                                     data-id="3" data-name="Classic Pizza" data-price="27" data-quantity="1"
                                     data-image="./img/pizza-3.png">Carrinho</button>
                                 </div>
-                            </div>
+                            </div>                            
                             <div class="item row align-items-center">
                                 <div class="col-sm-3 pr-5">
                                     <img class="product-img" src="./img/pizza-4.png">
@@ -216,17 +216,16 @@
             </div>
         </div>
         <div class="nav-item my-cart-icon">
-            <img src="./img/cart.svg" style="width:20px;"> <span class="badge badge-notify my-cart-badge"> </span>
+            <img src="./img/cart.svg" style="width:20px;"> 
+            <span class="badge badge-notify my-cart-badge"> </span>
         </div>
-        <footer class="block footer1 footer text-center">
-            
+        <footer class="block footer1 footer text-center">            
         </footer>
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-            AOS.init();
+           AOS.init();
         </script>
         <script src="js/custom-general.js"></script>
     </body>
-
 </html>
