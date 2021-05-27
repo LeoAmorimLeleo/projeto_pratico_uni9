@@ -40,33 +40,33 @@
               <form action="UsrServlet" method="GET">
                 <h3 class="mb-4 text-center">Cadastrar novo endereço</h3>
                 <div class="form-group">
-                    <input name="nome" type="text" class="form-control" id="nome" aria-describedby="nome"
-                    placeholder="Nome" required="">
+                    <input name="bairro" type="text" class="form-control" id="bairro" aria-describedby="bairro"
+                    placeholder="Bairro" required="">
                 </div>
                 <div class="form-group">
-                    <input name="sobrenome" type="text" class="form-control" id="sobrenome"
-                    placeholder="Sobrenome" required="">
+                    <input name="rua" type="text" class="form-control" id="rua"
+                    placeholder="Rua" required="">
                 </div>                             
                 <div class="form-group">
-                    <input name="senha1" type="password" class="form-control" id="senha1"
-                    placeholder="Senha" required="">
+                    <input name="numero" type="text" class="form-control" id="numero"
+                    placeholder="Numero" required="">
                 </div>                             
                 <div class="form-group">
-                    <input name="senha2" type="password" class="form-control"  id="senha2"
-                    placeholder="Confirme sua senha" required="">
+                    <input name="complemento" type="text" class="form-control" id="complemento"
+                    placeholder="Complemento" required="">
                 </div>                             
                 <div class="form-group">
-                    <input name="celular" type="text" class="form-control"  id="celular" aria-describedby="celular"
-                    placeholder="(DDD)Celular" required="">
+                    <input name="cep" type="text" class="form-control"  id="cep" aria-describedby="cep"
+                    placeholder="Cep" required="">
                 </div>                             
                 <div class="form-group">
-                    <input name="email" type="email" class="form-control"  id="email" aria-describedby="emailHelp"
-                    placeholder="E-mail" required="">
+                    <input name="cidade" type="text" class="form-control"  id="cidade" aria-describedby="cidade"
+                    placeholder="Cidade" required="">
                 </div> 
-                <div class="form-group form-check">
-                    <input name="confirmar" type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoções via e-mail?</label>
-                </div>
+                <div class="form-group">
+                    <input name="estado" type="email" class="form-control"  id="estado" aria-describedby="estado"
+                    placeholder="Estado" required="">
+                </div> 
                 <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Registrar</button> 
             </form>       
         </div>
@@ -80,7 +80,6 @@
             <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#    list-messages" role="tab" aria-controls="messages">Messages</a>
             <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#    list-settings" role="tab" aria-controls="settings">Settings</a>
             <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Confirmar pedido</button> 
-
         </div> 
     </div>
 </div>
@@ -92,18 +91,20 @@
 
     function salvar_dados(){        	
 
-        var camponome = document.getElementById("nome").value;
-        var camposobrenome = document.getElementById("sobrenome").value;
-        var camposenha1 = document.getElementById("senha1").value;
-        var camposenha2 = document.getElementById("senha2").value;
-        var campocelular = document.getElementById("celular").value;
-        var campoemail = document.getElementById("email").value;
+        var bairro = document.getElementById("bairro").value;
+        var rua = document.getElementById("rua").value;
+        var numero = document.getElementById("numero").value;
+        var complemento = document.getElementById("complemento").value;
+        var cep = document.getElementById("cep").value;
+        var cidade = document.getElementById("cidade").value;
+        var estado = document.getElementById("estado").value;
 
 
-        var json = {"nome":camponome,"sobrenome":camposobrenome,"celular":campocelular,"email":campoemail,"senha":camposenha1};
+        var json = 
+        {"bairro":bairro,"rua":rua,"numero":numero,"complemento":complemento,"cep":cep,"cidade":cidade,"estado":estado};
 
         $.ajax({
-            url:"UsrServlet",
+            url:"EnderecoServlet",
             data: json,
             type: "post",
             success: function(resp){
