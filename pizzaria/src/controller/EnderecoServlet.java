@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.EnderecoBean;
+import model.EnderecoDao;
 import model.PedidoBean;
 import model.PedidoDao;
 import model.UsuarioBean;
@@ -20,24 +22,23 @@ public class EnderecoServlet extends HttpServlet {
         super();
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		
+		EnderecoBean enderecoBean = new EnderecoBean();
 		
-		PedidoBean PedidoBean = new PedidoBean();
+		enderecoBean.setId_cliente(15);
+		enderecoBean.setBairro(request.getParameter("bairro"));
+		enderecoBean.setRua(request.getParameter("rua"));
+		enderecoBean.setNumero(request.getParameter("numero"));
+		enderecoBean.setComplemento(request.getParameter("complemento"));
+		enderecoBean.setCep(Integer.parseInt(request.getParameter("cep")));
+		enderecoBean.setCidade(request.getParameter("cidade"));
+		enderecoBean.setEstado(request.getParameter("estado"));
 		
-		PedidoBean.setId_cliente(15);
-		PedidoBean.setBairro(request.getParameter("bairro"));
-		PedidoBean.setRua(request.getParameter("rua"));
-		PedidoBean.setNumero(request.getParameter("numero"));
-		PedidoBean.setComplemento(request.getParameter("complemento"));
-		PedidoBean.setCep(Integer.parseInt(request.getParameter("cep")));
-		PedidoBean.setCidade(request.getParameter("cidade"));
-		PedidoBean.setEstado(request.getParameter("estado"));
-		
-		PedidoDao pedidoDao = new PedidoDao();
+		EnderecoDao enderedoDao = new EnderecoDao();
 		
 		try {
-			pedidoDao.inserir(PedidoBean);
+			enderedoDao.inserir(enderecoBean);
 			response.getWriter().append("Dados inseridos com sucesso!");
 		} catch (Exception e) {			
 			e.printStackTrace();
