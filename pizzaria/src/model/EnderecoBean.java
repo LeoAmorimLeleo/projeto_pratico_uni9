@@ -1,6 +1,6 @@
 package model;
 
-public class PedidoBean {
+public class EnderecoBean {
 	private int id;
 	private int id_cliente;
 	private String bairro;
@@ -11,9 +11,9 @@ public class PedidoBean {
 	private String cidade;
 	private String estado;
 	
-	public PedidoBean(){}
+	public EnderecoBean(){}
 	
-	public PedidoBean(int id_cliente, String bairro,
+	public EnderecoBean(int id_cliente, String bairro,
 			String rua, String numero, String complemento, 
 			int cep, String cidade, String estado)
 	{
