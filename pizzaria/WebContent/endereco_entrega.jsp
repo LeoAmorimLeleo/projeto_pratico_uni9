@@ -1,3 +1,7 @@
+<%@page import="model.EnderecoDao"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.EnderecoBean"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">    
 <head>
@@ -8,7 +12,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/jquery.min.js"></script>
     <link rel="icon" href="./img/icon.png" />
-    <title>Uni9 Delivery - Endereço de Entrega</title>
+    <title>Uni9 Delivery - EndereÃ§o de Entrega</title>
 </head>       
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
@@ -38,7 +42,7 @@
           <div class="row justify-content-around">
             <div class="col-4">
               <form action="UsrServlet" method="GET">
-                <h3 class="mb-4 text-center">Cadastrar novo endereço</h3>
+                <h3 class="mb-4 text-center">Cadastrar novo endereÃ§o</h3>
                 <div class="form-group">
                     <input name="bairro" type="text" class="form-control" id="bairro" aria-describedby="bairro"
                     placeholder="Bairro" required="">
@@ -73,14 +77,24 @@
         <div class="col-4">
           <div class="list-group" id="list-tab" role="tablist">
             <div class="row">
-                <h3 class="mb-4 text-center">Selecionar endereço cadastrado</h3>
-            </div>
-            
-         	  
-            
-            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#     list-profile" role="tab" aria-controls="profile">Profile</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#    list-messages" role="tab" aria-controls="messages">Messages</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#    list-settings" role="tab" aria-controls="settings">Settings</a>
+                <h3 class="mb-4 text-center">Selecionar endereÃ§o cadastrado</h3>
+            </div>  
+               <%
+                       ArrayList<model.EnderecoBean> lista = new ArrayList<model.EnderecoBean>();
+                        try{
+                            
+                            EnderecoDao enderecoDao = new EnderecoDao();
+                            lista = enderecoDao.get();
+                            
+                            for(EnderecoBean p:lista){
+                            %>
+                            	<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><%=p.getBairro()%></a>                                      
+                          <%  }                            
+                         
+                        	}catch(Exception ex){
+                            out.print(ex);
+                        }
+                    %>      	
             <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Confirmar pedido</button> 
         </div> 
     </div>

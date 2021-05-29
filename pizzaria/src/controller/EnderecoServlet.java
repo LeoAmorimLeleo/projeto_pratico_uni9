@@ -39,7 +39,7 @@ public class EnderecoServlet extends HttpServlet {
 		
 		try {
 			enderedoDao.inserir(enderecoBean);
-			response.getWriter().append("Dados inseridos com sucesso!");
+			response.getWriter().append("Endereço cadastrado com sucesso!");
 		} catch (Exception e) {			
 			e.printStackTrace();
 			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());
