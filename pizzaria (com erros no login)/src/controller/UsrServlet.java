@@ -29,6 +29,48 @@ public class UsrServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		String acao = new request.getParameter("acao");
+		if(acao!=null){
+			if(acao.equals("autenticar")){
+				
+			
+			try {
+				UsuarioBean usuarioBean = new UsuarioBean();
+				
+				usuarioBean.setEmail(request.getParameter("email"));
+				usuarioBean.setSenha(request.getParameter("senha"));
+				
+				UsuarioDao usuarioDao = new UsuarioDao();
+				String resultado = usuarioDao.buscarUsuario(usuarioBean);
+				response.getWriter().append(resultado);
+			} catch (Exception e) {			
+				e.printStackTrace();
+				response.getWriter().append("Dados inseridos com sucesso!! " + e.toString());
+			}
+			 }
+			else if(acao.equals("buscar")){
+				try {
+					UsuarioBean usuarioBean = new UsuarioBean();
+					
+					usuarioBean.setEmail(request.getParameter("email"));
+					usuarioBean.setSenha(request.getParameter("senha"));
+					
+					UsuarioDao usuarioDao = new UsuarioDao();
+					String resultado = usuarioDao.buscarUsuario(usuarioBean);
+					response.getWriter().append(resultado);
+				} catch (Exception e) {			
+					e.printStackTrace();
+					response.getWriter().append("Usuario ou senha invalidos! " + e.toString());
+		}
+			}
+			
+			
+		
+		
+		
+		
+		
 		UsuarioBean usuarioBean = new UsuarioBean();
 		
 		usuarioBean.setNome(request.getParameter("nome"));
@@ -48,7 +90,11 @@ public class UsrServlet extends HttpServlet {
 			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());
 		}
 	}
-	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

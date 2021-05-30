@@ -1,19 +1,13 @@
 package model;
 
 public class UsuarioBean {
-	private int id;
+	
 	private String nome;
 	private String sobrenome;
 	private String email;
 	private String senha;
 	private String celular;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getNome() {
 		return nome;
 	}
