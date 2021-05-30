@@ -20,15 +20,12 @@
                             <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
-                    </li>
-              
+                    </li>              
                     
                     <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
-                    </li>
-                    
+                    </li>                    
                     <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
-                    </li>
-              
+                    </li>              
             </div>
     </nav>
     </head>     
@@ -84,8 +81,11 @@
                     data: json,
                     type: "post",
                     success: function(resp){
-                    	console.log(resp);
-                    	alert(resp);
+                    	if(resp == "true"){
+                    		document.location = "index.jsp"
+                    	}else{
+                    		alert("Usuário ou senha inválidos");
+                    	}
                     }
                 });            
             }             
