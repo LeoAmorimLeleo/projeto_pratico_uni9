@@ -1,3 +1,5 @@
+<%@page import="model.UsuarioBean"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">    
     <head>
@@ -23,10 +25,21 @@
                     </li>
               
                     
-                    <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
-                    </li>
-                    
-                    <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
+                    <li class="nav-item"> 
+                    	<a class="nav-link" href="./login.jsp">Login</a>
+                    </li> 
+                    <%
+                    	UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
+                    	if(usuario != null){
+                    		%>
+                    	    <li class="nav-item"> 
+                        		<a class="nav-link" href="./logout.jsp"><%=usuario.getNome()%> - Sair</a>
+                        	</li>
+                        <%
+                    	}
+                    %>            
+                    <li class="nav-item">
+                    	 <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
                     </li>
               
             </div>
@@ -41,7 +54,7 @@
                              <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
                             data-aos-offset="0">Uni9 Delivery de Pizza</h1>
                             <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
-                            data-aos-delay="300">Junte-se a nós, e tenha descontos semanalmente</p>
+                            data-aos-delay="300">Junte-se a nÃ³s, e tenha descontos semanalmente</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -76,11 +89,11 @@
                             </div> 
                             <div class="form-group form-check">
                                 <input name="confirmar" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promo��es via e-mail?</label>
+                                <label class="form-check-label small text-muted" for="exampleCheck1">Enviar promoções via e-mail?</label>
                             </div>
                             <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Registrar</button> 
                             <small class="d-block mt-4 text-center">
-                                <a class="text-gray" href="login.jsp">J� tem conta?</a>
+                                <a class="text-gray" href="login.jsp">Já tem conta?</a>
                             </small>
                         </form>
                     </div>
