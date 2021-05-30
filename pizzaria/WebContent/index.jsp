@@ -23,8 +23,7 @@
                              <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
-                    </li>
-                    
+                    </li>                   
                    
                     
                     <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
@@ -218,9 +217,8 @@
         <div class="nav-item my-cart-icon">
             <img src="./img/cart.svg" style="width:20px;"> 
             <span class="badge badge-notify my-cart-badge"> </span>
-        </div>
-        <footer class="block footer1 footer text-center">            
-        </footer>
+        </div>     
+        <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer>      
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>

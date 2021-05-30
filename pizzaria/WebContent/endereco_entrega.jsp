@@ -88,18 +88,25 @@
                             
                             for(EnderecoBean p:lista){
                             %>
-                            	<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><%=p.getBairro()%></a>                                      
+                            	<a class="list-group-item list-group-item-action" data-idenderecoentrega="<%=p.getId()%>" id="<%=p.getId()%>" data-toggle="list" href="#" role="tab" aria-controls="profile"><%=p.getBairro()%></a>                                      
                           <%  }                            
                          
                         	}catch(Exception ex){
                             out.print(ex);
                         }
                     %>      	
-            <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Confirmar pedido</button> 
+            <button type="button" class="btn btn-dark btn-round btn-block" onClick="finalizar_pedido()">Confirmar pedido</button> 
         </div> 
     </div>
 </div>
 </div>
+	<div class="nav-item my-cart-icon">
+         <img src="./img/cart.svg" style="width:20px;"> 
+         <span class="badge badge-notify my-cart-badge"> </span>
+    </div>   
+<footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer>    
+<script src="./js/mycart.js"></script>
+<script src="./js/mycart-custom.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -130,8 +137,42 @@
                alert(vetor_json[0].msg);
            }
        });            
-    }             
+    }   
+    
+    function finalizar_pedido(){
+	
+    	var products = JSON.parse(localStorage.products)
+    	console.log(products);
+    	var testeer = [];
+    	  $.each(products, function(index, value){
+    	        	var ob = {};    	        	
+    	        	ob.id =	value.id;  
+    	        	testeer.push(value.id);
+    	  });
+    	
+    	console.log(testeer);
+        var idEndereco = document.getElementsByClassName("active");
+        var enderoDeEntrega = idEndereco[1].dataset.idenderecoentrega;        
+    	
+        var json = {"products":testeer,"enderoDeEntrega":enderoDeEntrega};
+        
+    	  $.ajax({
+               url:"PedidoServlet",
+               data: json,
+               type: "post",
+               success: function(resp){
+                  console.log(resp);
+                  alert(resp);
+                  var vetor_json = JSON.parse(resp);
+                  alert(vetor_json[0].msg);
+              }
+          });
+    }
+    
+    
 </script>
 <script src="js/custom-general.js"></script>
+<script src="./js/mycart.js"></script>
+<script src="./js/mycart-custom.js"></script>
 </body>
 </html>
