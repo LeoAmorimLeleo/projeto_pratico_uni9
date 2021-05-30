@@ -23,7 +23,12 @@
                              <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
+
+                    </li>                   
+                   
+
                     </li>                                   
+
                     
                     <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
                     </li>
@@ -58,9 +63,81 @@
                         
                         <!-- Start Pizza Menu -->
                         <div class="menu menu--is-visible" id="pizzaMenu" data-aos="fade-up">
+
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="./img/pizza-1.png">
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                         <h3 class="item__title">Cheese Pizza</h3>
+ <span class="item__dots"></span>
+ <span class="item__price">$29</span>
+                                    </div>
+                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
+                                        officia eaque nobis ut.</p>
+                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
+                                    data-id="1" data-name="Cheese Pizza" data-price="29" data-quantity="1"
+                                    data-image="./img/pizza-1.png">Carrinho</button>
+                                </div>
+                            </div>
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="./img/pizza-2.png">
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                         <h3 class="item__title">Hot Pastrami</h3>
+ <span class="item__dots"></span>
+ <span class="item__price">$25</span>
+                                    </div>
+                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
+                                        officia eaque nobis ut.</p>
+                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
+                                    data-id="2" data-name="Hot Pastrami" data-price="25" data-quantity="1"
+                                    data-image="./img/pizza-2.png">Carrinho</button>
+                                </div>
+                            </div>
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="./img/pizza-3.png">
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                         <h3 class="item__title">Classic Pizza</h3>
+ <span class="item__dots"></span>
+ <span class="item__price">$27</span>
+                                    </div>
+                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
+                                        officia eaque nobis ut.</p>
+                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
+                                    data-id="3" data-name="Classic Pizza" data-price="27" data-quantity="1"
+                                    data-image="./img/pizza-3.png">Carrinho</button>
+                                </div>
+                            </div>                            
+                            <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="./img/pizza-4.png">
+                                </div>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">
+                                         <h3 class="item__title">Country Pizza</h3>
+ <span class="item__dots"></span>
+ <span class="item__price">$26</span>
+                                    </div>
+                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
+                                        officia eaque nobis ut.</p>
+                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
+                                    data-id="4" data-name="Country Pizza" data-price="26" data-quantity="1"
+                                    data-image="./img/pizza-4.png">Carrinho</button>
+                                </div>
+                            </div>
+                        </div>
+
                         
                     	</section>						
                     	                                                  
+
                         <!-- End Pizza Menu -->
                         
                         <!-- Start Coffee Menu -->
@@ -85,17 +162,15 @@
                 </section>
             </div>
         <div class="nav-item my-cart-icon">
-            <img src="./img/cart.svg" style="width:20px;"> <span class="badge badge-notify my-cart-badge"> </span>
-        </div>
-        <footer class="block footer1 footer text-center">
-            
-        </footer>
+            <img src="./img/cart.svg" style="width:20px;"> 
+            <span class="badge badge-notify my-cart-badge"> </span>
+        </div>     
+        <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer>      
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-            AOS.init();
+           AOS.init();
         </script>
         <script src="js/custom-general.js"></script>
     </body>
-
 </html>
