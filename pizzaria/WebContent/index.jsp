@@ -88,7 +88,7 @@
                                     </div>
                                     <p class="item__description"><%=p.getDescricao()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
-                                    data-id="1" data-name="Cheese Pizza" data-price="<%=p.getValor()%>" data-quantity="1"
+                                    data-id="<%=p.getId()%>" data-name="<%=p.getSabor()%>" data-price="<%=p.getValor()%>" data-quantity="1"
                                     data-image="./img/pizza-1.png">Carrinho</button>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                                     </div>
                                     <p class="item__description"><%=t.getDescricao()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
-                                    data-id="1" data-name="Cheese Pizza" data-price="<%=t.getValor()%>" data-quantity="1"
+                                    data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
                                     data-image="./img/Coca.png">Carrinho</button>
                                 </div>
                             </div>                   
@@ -160,7 +160,7 @@
                                     </div>
                                     <p class="item__description"><%=t.getDescricao()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
-                                    data-id="1" data-name="Cheese Pizza" data-price="<%=t.getValor()%>" data-quantity="1"
+                                    data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
                                     data-image="./img/brigadeiro.png">Carrinho</button>
                                 </div>
                             </div>                   
