@@ -11,7 +11,6 @@ public class Pizza {
     private String tipo;
 
     public Pizza() {
-    	
     }
 
     public Pizza(int id, String sabor, String descricao, String tamanho, float valor, String foto) {
@@ -82,5 +81,7 @@ public class Pizza {
     @Override
     public String toString() {
         return "Bebida{" + "id=" + id + ", nome=" + sabor + ", tipo=" + tipo + ", descricao=" + descricao + ", valor=" + valor + ", tamanho=" + tamanho + ", foto=" + foto + '}';
-    }    
+    }
+
+    
 }

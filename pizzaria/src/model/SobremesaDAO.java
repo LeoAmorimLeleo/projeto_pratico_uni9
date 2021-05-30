@@ -29,8 +29,6 @@ public class SobremesaDAO extends ConnectionFactory{
             sobremesa.add(p);
         }
         return sobremesa;
-    }    
-
-	
-
+    }   
+    
 }
