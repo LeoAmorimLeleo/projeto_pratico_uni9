@@ -9,10 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.EnderecoBean;
 import model.EnderecoDao;
-import model.PedidoBean;
-import model.PedidoDao;
-import model.UsuarioBean;
-import model.UsuarioDao;
 
 @WebServlet("/EnderecoServlet")
 public class EnderecoServlet extends HttpServlet {
