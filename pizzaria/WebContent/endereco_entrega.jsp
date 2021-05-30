@@ -140,8 +140,9 @@
     }   
     
     function finalizar_pedido(){
-	
-    	var products = JSON.parse(localStorage.products)
+    	alert("Obrigado! O seu pedido está sendo preprado e logo chegará até você!");
+		/* 
+			var products = JSON.parse(localStorage.products)
     	console.log(products);
     	var testeer = [];
     	  $.each(products, function(index, value){
@@ -166,7 +167,9 @@
                   var vetor_json = JSON.parse(resp);
                   alert(vetor_json[0].msg);
               }
-          });
+          });		
+		*/
+    	
     }
     
     
