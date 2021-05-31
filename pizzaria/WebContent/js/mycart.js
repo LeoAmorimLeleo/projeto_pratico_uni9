@@ -175,7 +175,7 @@
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>' +
-        '<a href="#" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</a>' +
+        '<a class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</a>' +
         '</div>' +
         '</div>' +
         '</div>' +
