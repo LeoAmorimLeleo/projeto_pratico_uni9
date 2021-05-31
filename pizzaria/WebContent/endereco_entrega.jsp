@@ -1,4 +1,5 @@
 <%@page import="model.EnderecoDao"%>
+<%@page import="model.UsuarioBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.EnderecoBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,6 +16,32 @@
     <title>Uni9 Delivery - Endereço de Entrega</title>
 </head>       
 <body>
+	<%
+		UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
+		if(usuario == null){
+			response.sendRedirect("login.jsp");
+		}
+	%>	
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">          
+          <h4 class="modal-title">Recebemos o seu pedido</h4>
+          <button type="button" class="close btn-redirecionar-index" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Já começamos a preparar o seu pedido! Ele chegará até você em até 40 minutos!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark btn-round btn-block btn-redirecionar-index" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>	
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
         <a class="navbar-brand" href="./index.jsp">
             <img src="./img/logo3.png"></a>
@@ -24,7 +51,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
+                <li class="nav-item"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
                 </li>
@@ -95,7 +122,7 @@
                             out.print(ex);
                         }
                     %>      	
-            <button type="button" class="btn btn-dark btn-round btn-block" onClick="finalizar_pedido()">Confirmar pedido</button> 
+            <button type="button" class="btn btn-dark btn-round btn-block" id="btn-finalizar-pedido">Confirmar pedido</button> 
         </div> 
     </div>
 </div>
@@ -168,11 +195,8 @@
                   alert(vetor_json[0].msg);
               }
           });		
-		*/
-    	
+		*/    	
     }
-    
-    
 </script>
 <script src="js/custom-general.js"></script>
 <script src="./js/mycart.js"></script>

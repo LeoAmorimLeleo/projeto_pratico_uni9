@@ -82,7 +82,7 @@
                     type: "post",
                     success: function(resp){
                     	if(resp == "true"){
-                    		document.location = "index.jsp"
+                    		document.location = "./index.jsp";
                     	}else{
                     		alert("Usuário ou senha inválidos");
                     	}

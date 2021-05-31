@@ -175,7 +175,7 @@
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>' +
-        '<a href="./endereco_entrega.jsp" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</a>' +
+        '<a href="#" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</a>' +
         //'<button type="button" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</button>' +
         '</div>' +
         '</div>' +
@@ -275,7 +275,7 @@
       var id = $(this).closest("tr").data("id");
       var quantity = $(this).val();
 
-      $(this).parent("td").next("." + classProductTotal).text("$" + price * quantity);
+      $(this).parent("td").next("." + classProductTotal).text("R$" + price * quantity);
       ProductManager.updatePoduct(id, quantity);
 
       $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
@@ -298,13 +298,28 @@
       var products = ProductManager.getAllProducts();
       if(!products.length) {
         $("#" + idEmptyCartMessage).fadeTo('fast', 0.5).fadeTo('fast', 1.0);
-        return ;
+        return;
       }
-      updateCart();
-      options.checkoutCart(ProductManager.getAllProducts());
-      ProductManager.clearProduct();
-      $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
-      $("#" + idCartModal).modal("hide");
+      document.location = "./endereco_entrega.jsp";    
+    });
+
+    $("#btn-finalizar-pedido").click(function(){
+
+      var enderecoSelecionado = document.querySelector(".active");
+      if (!enderecoSelecionado) {
+          alert("Selecione ou cadastre um endereço de entrega");
+          return;
+      }
+      $("#myModal").modal("show");                          
+    });
+
+    $(".btn-redirecionar-index").click(function(){
+        updateCart();
+        options.checkoutCart(ProductManager.getAllProducts());
+        ProductManager.clearProduct();
+        $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
+        $("#" + idCartModal).modal("hide"); 
+       document.location = "./index.jsp";
     });
 
     $(document).on('keypress', "." + classProductQuantity, function(evt){
@@ -351,6 +366,5 @@
       new MyCart(this, userOptions);
     });
   }
-
 
 })(jQuery);
