@@ -38,7 +38,7 @@
                              <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
                             data-aos-offset="0">Uni9 Delivery de Pizza</h1>
                             <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
-                            data-aos-delay="300">Junte-se a nÃ³s, e tenha descontos semanalmente</p>
+                            data-aos-delay="300">Junte-se a nós, e tenha descontos semanalmente</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -62,6 +62,7 @@
                 </div>
             </div>
         </div>
+        <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer> 
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>

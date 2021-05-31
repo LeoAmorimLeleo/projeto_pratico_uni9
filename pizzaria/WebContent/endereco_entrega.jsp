@@ -2,6 +2,7 @@
 <%@page import="model.UsuarioBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.EnderecoBean"%>
+<%@page import="model.UsuarioBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">    
@@ -16,12 +17,6 @@
     <title>Uni9 Delivery - Endereço de Entrega</title>
 </head>       
 <body>
-	<%
-		UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
-		if(usuario == null){
-			response.sendRedirect("login.jsp");
-		}
-	%>	
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -51,24 +46,34 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
-                </li>
-
-
-                <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
-                </li>
-
-                <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
-                </li>
+            
+            		<%
+							UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
+				    		if(usuario == null){
+				    			response.sendRedirect("login.jsp");
+				    		}else{%>
+				    		
+				    			<li class="nav-item"> 
+								<a class="nav-link" href="./index.jsp">Bem-Vindo - <%=usuario.getNome()%></a>
+							</li>
+							<li class="nav-item">
+                    			<a class="nav-link" href="./index.jsp#menu">Menu</a>
+                    		</li>   
+                    		<li class="nav-item"> 
+                        		<a class="nav-link" href="./logout.jsp">Sair</a>
+                        	</li>
+				    	<%} %>  
             </div>
         </nav>
         <div class="container"> 
           <div class="row justify-content-around">
             <div class="col-4">
               <form action="UsrServlet" method="GET">
-                <h3 class="mb-4 text-center">Cadastrar novo endereço</h3>
+                <h3 class="mb-4 text-center">Cadastrar novo endereço</h3>                                           
+                <div class="form-group">
+                    <input name="cep" type="text" class="form-control"  id="cep" aria-describedby="cep"
+                    placeholder="Cep" onblur="pesquisacep(this.value);" required="">
+                </div>
                 <div class="form-group">
                     <input name="bairro" type="text" class="form-control" id="bairro" aria-describedby="bairro"
                     placeholder="Bairro" required>
@@ -84,11 +89,7 @@
                 <div class="form-group">
                     <input name="complemento" type="text" class="form-control" id="complemento"
                     placeholder="Complemento" required="">
-                </div>                             
-                <div class="form-group">
-                    <input name="cep" type="text" class="form-control"  id="cep" aria-describedby="cep"
-                    placeholder="Cep" required="">
-                </div>                             
+                </div>                               
                 <div class="form-group">
                     <input name="cidade" type="text" class="form-control"  id="cidade" aria-describedby="cidade"
                     placeholder="Cidade" required="">
@@ -121,7 +122,6 @@
 				    <option value="SP" selected>São Paulo</option>
 				    <option value="SE">Sergipe</option>
 				    <option value="TO">Tocantins</option>
-				    <option value="EX">Estrangeiro</option>
 				</select>
                 <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Registrar</button> 
             </form>       
@@ -160,6 +160,7 @@
     </div>   
 <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer>    
 <script src="./js/mycart.js"></script>
+<script src="./js/buscar-endereco-por-cep.js"></script>
 <script src="./js/mycart-custom.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -185,10 +186,11 @@
             data: json,
             type: "post",
             success: function(resp){
-               console.log(resp);
-               alert(resp);
-               var vetor_json = JSON.parse(resp);
-               alert(vetor_json[0].msg);
+            	if(resp == "true"){
+            		document.location.reload(true);
+            	}else{
+            		alert(resp);
+            	}
            }
        });            
     }   

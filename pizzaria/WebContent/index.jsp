@@ -65,9 +65,9 @@
         <div class="block hero1 my-auto" style="background-image:url(https://cdn.pixabay.com/photo/2015/04/28/21/20/pizza-744405_1280.jpg);">
             <div class="container-fluid text-center">
                  <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-offset="0">Uni9 Delivery Pizzaria</h1>
+                data-aos-offset="0">Uni9 Delivery de Pizzaria</h1>
                 <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-delay="600">Deliciosos sabores de pizzas, com varias variedade!</p>
+                data-aos-delay="600">Deliciosos sabores de pizzas, com várias variedades!</p>
                 <a
                 href="#menu" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Veja o Menu</a>
@@ -144,7 +144,6 @@
  										<span class="item__dots"></span>
  										<span class="item__price">R$ <%=t.getValor()%></span>
                                     </div>
-                                    <p class="item__description"><%=t.getDescricao()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
                                     data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
                                     data-image="./img/Coca.png">Carrinho</button>
@@ -199,9 +198,7 @@
         <div class="nav-item my-cart-icon">
             <img src="./img/cart.svg" style="width:20px;"> <span class="badge badge-notify my-cart-badge"> </span>
         </div>
-        <footer class="block footer1 footer text-center">
-            
-        </footer>
+        <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer> 
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>

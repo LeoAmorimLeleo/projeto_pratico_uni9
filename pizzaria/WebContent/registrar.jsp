@@ -54,7 +54,7 @@
                              <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
                             data-aos-offset="0">Uni9 Delivery de Pizza</h1>
                             <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
-                            data-aos-delay="300">Junte-se a nÃ³s, e tenha descontos semanalmente</p>
+                            data-aos-delay="300">Junte-se a nós, e tenha descontos semanalmente</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -118,10 +118,17 @@
                     data: json,
                     type: "post",
                     success: function(resp){
-                    	console.log(resp);
-                    	alert(resp);
-                    	var vetor_json = JSON.parse(resp);
-                    	alert(vetor_json[0].msg);
+                    	if(resp == "true"){
+                    		 alert("Cadastro realizado com sucesso!");
+                    	     document.getElementById("nome").value = "";
+                             document.getElementById("sobrenome").value = "";
+                             document.getElementById("senha1").value = "";
+                             document.getElementById("senha2").value = "";
+                             document.getElementById("celular").value = "";
+                             document.getElementById("email").value = "";
+                    	}else{
+                    		alert(resp);
+                    	}
                     }
                 });            
             }             

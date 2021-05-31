@@ -7,7 +7,7 @@ public class EnderecoBean {
 	private String rua;
 	private String numero;
 	private String complemento;
-	private int cep;
+	private String cep;
 	private String cidade;
 	private String estado;
 	
@@ -15,7 +15,7 @@ public class EnderecoBean {
 	
 	public EnderecoBean(int id_cliente, String bairro,
 			String rua, String numero, String complemento, 
-			int cep, String cidade, String estado)
+			String cep, String cidade, String estado)
 	{
 		this.id_cliente = id_cliente;
 		this.bairro = bairro;
@@ -63,10 +63,10 @@ public class EnderecoBean {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 	public String getCidade() {

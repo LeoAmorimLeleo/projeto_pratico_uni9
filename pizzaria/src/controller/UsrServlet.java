@@ -32,7 +32,7 @@ public class UsrServlet extends HttpServlet {
 			UsuarioDao usuarioDao = new UsuarioDao();
 			usuarioDao.inserirUsuario(usuarioBean);
 			
-			response.getWriter().append("Dados inseridos com sucesso!");
+			response.getWriter().append("true");
 		} catch (Exception e) {			
 			e.printStackTrace();
 			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());

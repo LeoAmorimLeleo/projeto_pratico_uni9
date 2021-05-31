@@ -27,7 +27,7 @@ public class EnderecoServlet extends HttpServlet {
 		enderecoBean.setRua(request.getParameter("rua"));
 		enderecoBean.setNumero(request.getParameter("numero"));
 		enderecoBean.setComplemento(request.getParameter("complemento"));
-		enderecoBean.setCep(Integer.parseInt(request.getParameter("cep")));
+		enderecoBean.setCep(request.getParameter("cep"));
 		enderecoBean.setCidade(request.getParameter("cidade"));
 		enderecoBean.setEstado(request.getParameter("estado"));
 		
@@ -35,7 +35,7 @@ public class EnderecoServlet extends HttpServlet {
 		
 		try {
 			enderedoDao.inserir(enderecoBean);
-			response.getWriter().append("Endereço cadastrado com sucesso!");
+			response.getWriter().append("true");
 		} catch (Exception e) {			
 			e.printStackTrace();
 			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());

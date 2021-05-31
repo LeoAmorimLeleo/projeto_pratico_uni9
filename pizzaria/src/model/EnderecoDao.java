@@ -18,7 +18,7 @@ public class EnderecoDao {
             ps.setString(3, enderecoBean.getRua());
             ps.setString(4, enderecoBean.getNumero());
             ps.setString(5, enderecoBean.getComplemento());
-            ps.setInt(6, enderecoBean.getCep());
+            ps.setString(6, enderecoBean.getCep());
             ps.setString(7, enderecoBean.getCidade());
             ps.setString(8, enderecoBean.getEstado());
             
@@ -49,7 +49,7 @@ public class EnderecoDao {
 	            endereco.setRua(rs.getString("rua"));             
 	            endereco.setNumero(rs.getString("numero"));
 	            endereco.setComplemento(rs.getString("complemento"));
-	            endereco.setCep(rs.getInt("cep"));
+	            endereco.setCep(rs.getString("cep"));
 	            endereco.setCidade(rs.getString("cidade"));
 	            endereco.setEstado(rs.getString("estado"));
 	            enderecos.add(endereco);
