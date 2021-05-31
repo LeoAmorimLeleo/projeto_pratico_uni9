@@ -5,6 +5,7 @@
 <%@page import="model.BebidaDAO"%>
 <%@page import="model.Sobremesa"%>
 <%@page import="model.SobremesaDAO"%>
+<%@page import="model.UsuarioBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -27,17 +28,37 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                             <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
-                    </li>                                   
                     
-                    <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
-                    </li>
-                    
-                    <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
-                    </li>
-              
+                    	<%
+							UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
+							if(usuario != null){
+								%>
+								<li class="nav-item active"> 
+									<a class="nav-link" href="./index.jsp">Bem-Vindo - <%=usuario.getNome()%></a>
+								</li>
+								<li class="nav-item">
+                    				<a class="nav-link" href="./index.jsp#menu">Menu</a>
+                    			</li>   
+                    			 <li class="nav-item"> 
+                        		<a class="nav-link" href="./logout.jsp">Sair</a>
+                        	</li>
+						<%} else{
+							%>
+							<li class="nav-item active"> 
+							 	<a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+                    				<a class="nav-link" href="./index.jsp#menu">Menu</a>
+                    			</li>
+                    			<li class="nav-item"> 
+                    				<a class="nav-link" href="./login.jsp">Login</a>
+                    			</li>                    
+                    			<li class="nav-item">
+                    				<a class="nav-link" href="./registrar.jsp">Registrar-se</a>
+                    			</li>
+							 
+						<%}	%>                
+                                 
     </nav>
     
     <body>

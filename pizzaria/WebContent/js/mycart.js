@@ -166,9 +166,9 @@
         '<div class="modal fade" id="' + idCartModal + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">' +
         '<div class="modal-dialog" role="document">' +
         '<div class="modal-content">' +
-        '<div class="modal-header">' +
-        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+        '<div class="modal-header">' +        
         '<h5 class="modal-title" id="myModalLabel"> &nbsp; Meu carrinho</h5>' +
+        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
         '</div>' +
         '<div class="modal-body">' +
         '<table class="table table-hover table-responsive" id="' + idCartTable + '"></table>' +
@@ -176,7 +176,6 @@
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>' +
         '<a href="#" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</a>' +
-        //'<button type="button" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -197,8 +196,8 @@
           '<td>' + this.name + '</td>' +
           '<td title="Unit Price">$' + this.price + '</td>' +
           '<td title="Quantity"><input type="number" min="1" style="width: 70px;" class="' + classProductQuantity + '" value="' + this.quantity + '"/></td>' +
-          '<td title="Total" class="' + classProductTotal + '">$' + total + '</td>' +
-          '<td title="Remove from Cart" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
+          '<td title="Total" class="' + classProductTotal + '">R$' + total + '</td>' +
+          '<td title="Remover do carrinho" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
           '</tr>'
         );
       });
@@ -209,7 +208,7 @@
         '<td><strong>Total</strong></td>' +
         '<td></td>' +
         '<td></td>' +
-        '<td><strong id="' + idGrandTotal + '">$</strong></td>' +
+        '<td><strong id="' + idGrandTotal + '">R$</strong></td>' +
         '<td></td>' +
         '</tr>'
         : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Seu carrinho está vazio</div>'
@@ -223,7 +222,7 @@
           '<td></td>' +
           '<td></td>' +
           '<td></td>' +
-          '<td><strong id="' +  + '">$</strong></td>' +
+          '<td><strong id="' +  + '">R$</strong></td>' +
           '<td></td>' +
           '</tr>'
         );
@@ -247,10 +246,10 @@
       $.each(products, function(){
         total += this.quantity * this.price;
       });
-      $("#" + idGrandTotal).text("$" + total);
+      $("#" + idGrandTotal).text("R$" + total);
     }
     var showDiscountPrice = function(products){
-      $("#" + idDiscountPrice).text("$" + options.getDiscountPrice(products));
+      $("#" + idDiscountPrice).text("R$" + options.getDiscountPrice(products));
     }
 
     /*

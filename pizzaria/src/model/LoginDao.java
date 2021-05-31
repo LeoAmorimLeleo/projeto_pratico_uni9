@@ -22,15 +22,7 @@ public class LoginDao {
             	usuario.setId(rs.getInt("id"));
             	usuario.setNome(rs.getString("nome"));              
             }
-            return usuario;           
-            
-           /* if (rs.next()){            	
-            	return "foii"; 
-            }else{
-            	return "Falha";
-            }
-            */
-            
+            return usuario;   
         } catch (Exception e) {
         	e.printStackTrace();
         	throw new Exception(e.toString());
