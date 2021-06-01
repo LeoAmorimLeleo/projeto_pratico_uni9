@@ -6,9 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.EnderecoBean;
 import model.EnderecoDao;
+import model.UsuarioBean;
 
 @WebServlet("/EnderecoServlet")
 public class EnderecoServlet extends HttpServlet {
@@ -22,7 +24,11 @@ public class EnderecoServlet extends HttpServlet {
 		
 		EnderecoBean enderecoBean = new EnderecoBean();
 		
-		enderecoBean.setId_cliente(15);
+
+		HttpSession session = request.getSession(); 
+		UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
+		
+		enderecoBean.setId_cliente(usuario.getId());
 		enderecoBean.setBairro(request.getParameter("bairro"));
 		enderecoBean.setRua(request.getParameter("rua"));
 		enderecoBean.setNumero(request.getParameter("numero"));

@@ -144,6 +144,7 @@
  										<span class="item__dots"></span>
  										<span class="item__price">R$ <%=t.getValor()%></span>
                                     </div>
+                                    <p class="item__description"><%=t.getVolume()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
                                     data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
                                     data-image="./img/Coca.png">Carrinho</button>
