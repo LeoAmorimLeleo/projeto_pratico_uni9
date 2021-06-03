@@ -1,5 +1,5 @@
 package controller;
-
+import security.Encript;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +27,9 @@ public class UsrServlet extends HttpServlet {
 			usuarioBean.setSobrenome(request.getParameter("sobrenome"));
 			usuarioBean.setCelular(request.getParameter("celular"));
 			usuarioBean.setEmail(request.getParameter("email"));
-			usuarioBean.setSenha(request.getParameter("senha"));
+			
+			String senhaHash =  Encript.toSHA256(request.getParameter("senha"));			
+			usuarioBean.setSenha(senhaHash);
 					
 			UsuarioDao usuarioDao = new UsuarioDao();
 			usuarioDao.inserirUsuario(usuarioBean);
