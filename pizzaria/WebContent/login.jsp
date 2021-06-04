@@ -85,7 +85,7 @@
                     	if(resp == "true"){
                     		document.location = "./index.jsp";
                     	}else{
-                    		alert("Usuário ou senha inválidos");
+                    		alert(resp);
                     	}
                     }
                 });            

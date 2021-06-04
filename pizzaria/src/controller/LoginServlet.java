@@ -1,5 +1,5 @@
 package controller;
-
+import security.Encript;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,22 +26,24 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 				String email = request.getParameter("email");
-				String senha = request.getParameter("senha");
+				String senhaHash = Encript.toSHA256(request.getParameter("senha"));
 				
 				LoginDao loginDao = new LoginDao();
-				UsuarioBean usuario = loginDao.autenticar(email, senha);
+				UsuarioBean usuario = loginDao.autenticar(email);
+				
+				
+				if(!usuario.getSenha().equals(senhaHash)) {
+					throw new Exception("Senha incorreta");
+				}			
 				
 				HttpSession session = request.getSession(); 
-		        session.setAttribute("usuario", usuario);  
-				
-		        String isAutenticado = "false";
-		        if(usuario.getId() > 0) { isAutenticado = "true"; }
+		        session.setAttribute("usuario", usuario);  				
 		        
-				response.getWriter().append(isAutenticado);
+				response.getWriter().append("true");
 				
 		} catch (Exception e) {			
 			e.printStackTrace();
-			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());
+			response.getWriter().append(e.getMessage());
 		}		
 	}
 	
