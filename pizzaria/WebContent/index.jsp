@@ -99,7 +99,7 @@
                     	%>
                      <div class="item row align-items-center">
                                 <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="./img/pizza-1.png" <%p.getFoto();%>>
+                                    <img class="product-img" src="<%=p.getFoto()%>">
                                 </div>
                                 <div class="details col-sm-9">
                                     <div class="item__header">                                    	
@@ -136,7 +136,7 @@
                     	       
                      <div class="item row align-items-center">
                                 <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="./img/Coca.png" <%t.getFoto();%>>
+                                    <img class="product-img" src="<%=t.getFoto()%>">
                                 </div>
                                 <div class="details col-sm-9">
                                     <div class="item__header">                                    	
@@ -171,7 +171,7 @@
                     	       
                      <div class="item row align-items-center">
                                 <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="./img/brigadeiro.png" <%t.getFoto();%>>
+                                    <img class="product-img" src="./img/brigadeiro.png" <%=t.getFoto()%>>
                                 </div>
                                 <div class="details col-sm-9">
                                     <div class="item__header">                                    	

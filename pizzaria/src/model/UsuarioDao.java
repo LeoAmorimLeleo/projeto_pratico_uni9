@@ -2,6 +2,8 @@ package model;
 
 import java.sql.*;
 
+import error.MessageError;
+
 public class UsuarioDao {
 
 	public void inserirUsuario(UsuarioBean usuario) throws Exception{
@@ -15,11 +17,11 @@ public class UsuarioDao {
             ps.setString(4, usuario.getEmail());
             ps.setString(5, usuario.getSenha());
             
-            ps.executeUpdate(); 
-            
-        } catch (Exception e) {
-        	e.printStackTrace();
-        	throw new Exception(e.toString());
+            ps.executeUpdate();        
+        }
+        catch(SQLException e) {
+        	String messageError = MessageError.get(e);
+        	throw new SQLException(messageError);        
         } finally {
         	con.close();
         }

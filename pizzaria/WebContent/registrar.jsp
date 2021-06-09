@@ -108,8 +108,7 @@
                 var camposenha1 = document.getElementById("senha1").value;
                 var camposenha2 = document.getElementById("senha2").value;
                 var campocelular = document.getElementById("celular").value;
-                var campoemail = document.getElementById("email").value;
-                
+                var campoemail = document.getElementById("email").value;                
                
                 var json = {"nome":camponome,"sobrenome":camposobrenome,"celular":campocelular,"email":campoemail,"senha":camposenha1};
                                  

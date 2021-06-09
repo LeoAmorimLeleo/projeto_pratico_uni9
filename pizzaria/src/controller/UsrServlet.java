@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import error.MessageError;
 import model.UsuarioBean;
 import model.UsuarioDao;
 
@@ -36,8 +37,7 @@ public class UsrServlet extends HttpServlet {
 			
 			response.getWriter().append("true");
 		} catch (Exception e) {			
-			e.printStackTrace();
-			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());
+			response.getWriter().append(e.getMessage());
 		}
 	}
 	
