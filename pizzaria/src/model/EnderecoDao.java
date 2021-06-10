@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import error.MessageError;
+
 public class EnderecoDao {
 	
 	public void inserir(EnderecoBean enderecoBean) throws Exception{
@@ -25,8 +27,8 @@ public class EnderecoDao {
             ps.executeUpdate(); 
             
         } catch (Exception e) {
-        	e.printStackTrace();
-        	throw new Exception(e.toString());
+        	String messageError = MessageError.get(e);
+        	throw new Exception(messageError);
         } finally {
         	con.close();
         }

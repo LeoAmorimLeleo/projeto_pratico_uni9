@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.Session;
 
+import error.MessageError;
 import model.LoginDao;
 import model.UsuarioBean;
 
@@ -41,8 +42,7 @@ public class LoginServlet extends HttpServlet {
 		        
 				response.getWriter().append("true");
 				
-		} catch (Exception e) {			
-			e.printStackTrace();
+		} catch (Exception e) {	
 			response.getWriter().append(e.getMessage());
 		}		
 	}

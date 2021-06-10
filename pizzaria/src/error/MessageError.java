@@ -12,7 +12,7 @@ public class MessageError {
 		else if(exceptionMessageError.contains("TB_Cliente.celular_UNIQUE")) {				
 			return "Celular já cadastrado";
 		}else {
-			return exception.getMessage();
+			return "Um erro ocorreu, tente novamente mais tarde.";
 		} 
 	}
 }

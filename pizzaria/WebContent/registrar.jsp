@@ -98,6 +98,7 @@
         </div>
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
         <script>
             AOS.init();
             
@@ -133,5 +134,6 @@
             }             
         </script>
         <script src="js/custom-general.js"></script>
+        <script src="js/mascaras.js"></script>
     </body>
 </html>
