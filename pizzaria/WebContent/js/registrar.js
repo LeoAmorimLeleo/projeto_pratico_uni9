@@ -1,5 +1,4 @@
 $(document).ready(function () {
-	$("label.error").hide();
     $("#form-registrar").validate({	 
 		errorClass: "is-invalid",
 		validClass: "is-valid",
@@ -44,7 +43,15 @@ $(document).ready(function () {
       			email: "Preencha com um E-mail válido",
 			}		 
 		},
-        submitHandler: function () {
+        submitHandler: function () {      
+		    var json = {
+				nome: document.getElementById("nome").value,
+				sobrenome: document.getElementById("sobrenome").value,
+				celular: document.getElementById("celular").value,
+				email: document.getElementById("email").value,
+				senha: document.getElementById("senha").value
+			};   
+			
 			$.ajax({
 	    		url:"UsrServlet",
 	            data: json,
@@ -52,42 +59,23 @@ $(document).ready(function () {
 	            success: function(resp){
 	            	if(resp == "true"){	
 	                	alert("Cadastro realizado com sucesso!");
-	
-	               		//$("#form-registrar").validate().resetForm();	
+						cleanForm();						
 	                }else{
 	                	alert(resp);
 	        	}
 	    	}
-	    });            
+	    });          
 			
-			salvar_dados();
         }
     });
 
-   function salvar_dados(){        	
-		var camponome = document.getElementById("nome").value;
-	    var camposobrenome = document.getElementById("sobrenome").value;
-	    var camposenha1 = document.getElementById("senha").value;
-	    var camposenha2 = document.getElementById("confirmarSenha").value;
-	    var campocelular = document.getElementById("celular").value;
-	    var campoemail = document.getElementById("email").value;                
-	               
-	    var json = {"nome":camponome,"sobrenome":camposobrenome,"celular":campocelular,"email":campoemail,"senha":camposenha1};
-	                                 
-	    $.ajax({
-	    		url:"UsrServlet",
-	            data: json,
-	            type: "post",
-	            success: function(resp){
-	            	if(resp == "true"){	
-	                	alert("Cadastro realizado com sucesso!");
-	
-	               		//$("#form-registrar").validate().resetForm();	
-	                }else{
-	                	alert(resp);
-	        	}
-	    	}
-	    });            
-	} 
+	function cleanForm(){
+		document.getElementById("nome").value = "",
+		document.getElementById("sobrenome").value = "",
+		document.getElementById("celular").value = "",
+		document.getElementById("email").value = "",
+		document.getElementById("senha").value = "";
+		$("#form-registrar").data('validator').resetForm();
+	}
 });
 
