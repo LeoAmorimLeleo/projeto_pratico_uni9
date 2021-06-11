@@ -3,7 +3,8 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+
+import error.MessageError;
 
 public class LoginDao {
 	
@@ -29,8 +30,8 @@ public class LoginDao {
 	       	
             return usuario;               
         } catch (Exception e) {
-        	e.printStackTrace();
-        	throw new Exception(e.toString());
+        	String messageError = MessageError.get(e);
+        	throw new Exception(messageError);
         } finally {
         	con.close();
         }

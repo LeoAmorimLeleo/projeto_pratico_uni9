@@ -21,26 +21,24 @@ public class EnderecoServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		
-		EnderecoBean enderecoBean = new EnderecoBean();
-		
-
-		HttpSession session = request.getSession(); 
-		UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
-		
-		enderecoBean.setId_cliente(usuario.getId());
-		enderecoBean.setBairro(request.getParameter("bairro"));
-		enderecoBean.setRua(request.getParameter("rua"));
-		enderecoBean.setNumero(request.getParameter("numero"));
-		enderecoBean.setComplemento(request.getParameter("complemento"));
-		enderecoBean.setCep(request.getParameter("cep"));
-		enderecoBean.setCidade(request.getParameter("cidade"));
-		enderecoBean.setEstado(request.getParameter("estado"));
-		
-		EnderecoDao enderedoDao = new EnderecoDao();
-		
 		try {
+			EnderecoBean enderecoBean = new EnderecoBean();			
+
+			HttpSession session = request.getSession(); 
+			UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
+			
+			enderecoBean.setId_cliente(usuario.getId());
+			enderecoBean.setBairro(request.getParameter("bairro"));
+			enderecoBean.setRua(request.getParameter("rua"));
+			enderecoBean.setNumero(request.getParameter("numero"));
+			enderecoBean.setComplemento(request.getParameter("complemento"));
+			enderecoBean.setCep(request.getParameter("cep"));
+			enderecoBean.setCidade(request.getParameter("cidade"));
+			enderecoBean.setEstado(request.getParameter("estado"));
+			
+			EnderecoDao enderedoDao = new EnderecoDao();			
 			enderedoDao.inserir(enderecoBean);
+			
 			response.getWriter().append("true");
 		} catch (Exception e) {			
 			e.printStackTrace();
