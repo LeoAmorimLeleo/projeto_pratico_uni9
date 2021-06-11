@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-md-6 p-0 h-md-100 loginarea">
                     <div class="d-md-flex align-items-center h-md-100 p-3 justify-content-center">
-                         <form action="UsrServlet" method="GET">
+                         <form action="UsrServlet" method="POST" id="form-registrar">
                             <h3 class="mb-4 text-center">Registre-se</h3>
                             <div class="form-group">
                                 <input name="nome" type="text" class="form-control" id="nome" aria-describedby="nome"
@@ -69,14 +69,14 @@
                             </div>
                             <div class="form-group">
                                 <input name="sobrenome" type="text" class="form-control" id="sobrenome"
-                                placeholder="Sobrenome" required="">
+                                placeholder="Sobrenome">
                             </div>                             
                               <div class="form-group">
-                                <input name="senha1" type="password" class="form-control" id="senha1"
+                                <input name="senha" type="password" class="form-control" id="senha"
                                 placeholder="Senha" required="">
                             </div>                             
                             <div class="form-group">
-                                <input name="senha2" type="password" class="form-control"  id="senha2"
+                                <input name="confirmarSenha" type="password" class="form-control"  id="confirmarSenha"
                                 placeholder="Confirme sua senha" required="">
                             </div>                             
                              <div class="form-group">
@@ -87,7 +87,7 @@
                                 <input name="email" type="email" class="form-control"  id="email" aria-describedby="emailHelp"
                                 placeholder="E-mail" required="">
                             </div> 
-                            <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Registrar</button> 
+                            <button type="submit" class="btn btn-dark btn-round btn-block">Registrar</button> 
                             <small class="d-block mt-4 text-center">
                                 <a class="text-gray" href="login.jsp">Já tem conta?</a>
                             </small>
@@ -96,42 +96,14 @@
                 </div>
             </div>
         </div>
+        <script src="./js/registrar.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
         <script>
             AOS.init();
-            
-            function salvar_dados(){        	
-                
-                var camponome = document.getElementById("nome").value;
-                var camposobrenome = document.getElementById("sobrenome").value;
-                var camposenha1 = document.getElementById("senha1").value;
-                var camposenha2 = document.getElementById("senha2").value;
-                var campocelular = document.getElementById("celular").value;
-                var campoemail = document.getElementById("email").value;                
-               
-                var json = {"nome":camponome,"sobrenome":camposobrenome,"celular":campocelular,"email":campoemail,"senha":camposenha1};
-                                 
-                $.ajax({
-                    url:"UsrServlet",
-                    data: json,
-                    type: "post",
-                    success: function(resp){
-                    	if(resp == "true"){
-                    		 alert("Cadastro realizado com sucesso!");
-                    	     document.getElementById("nome").value = "";
-                             document.getElementById("sobrenome").value = "";
-                             document.getElementById("senha1").value = "";
-                             document.getElementById("senha2").value = "";
-                             document.getElementById("celular").value = "";
-                             document.getElementById("email").value = "";
-                    	}else{
-                    		alert(resp);
-                    	}
-                    }
-                });            
-            }             
         </script>
         <script src="js/custom-general.js"></script>
         <script src="js/mascaras.js"></script>
