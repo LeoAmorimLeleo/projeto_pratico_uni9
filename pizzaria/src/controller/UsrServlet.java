@@ -1,5 +1,5 @@
 package controller;
-
+import security.Encript;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,55 +7,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import error.MessageError;
 import model.UsuarioBean;
 import model.UsuarioDao;
 
-/**
- * Servlet implementation class UsrServlet
- */
 @WebServlet("/UsrServlet")
 public class UsrServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	
     public UsrServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UsuarioBean usuarioBean = new UsuarioBean();
-		
-		usuarioBean.setNome(request.getParameter("nome"));
-		usuarioBean.setSobrenome(request.getParameter("sobrenome"));
-		usuarioBean.setCelular(request.getParameter("celular"));
-		usuarioBean.setEmail(request.getParameter("email"));
-		usuarioBean.setSenha(request.getParameter("senha"));
-		
-		
-				
-		UsuarioDao usuarioDao = new UsuarioDao();
+	
 		try {
+			
+			UsuarioBean usuarioBean = new UsuarioBean();
+			
+			usuarioBean.setNome(request.getParameter("nome"));
+			usuarioBean.setSobrenome(request.getParameter("sobrenome"));
+			usuarioBean.setCelular(request.getParameter("celular"));
+			usuarioBean.setEmail(request.getParameter("email"));
+			
+			String senhaHash =  Encript.toSHA256(request.getParameter("senha"));			
+			usuarioBean.setSenha(senhaHash);
+					
+			UsuarioDao usuarioDao = new UsuarioDao();
 			usuarioDao.inserirUsuario(usuarioBean);
-			response.getWriter().append("Dados inseridos com sucesso!");
+			
+			response.getWriter().append("true");
 		} catch (Exception e) {			
-			e.printStackTrace();
-			response.getWriter().append("Ocorreu o seguinte erro: " + e.toString());
+			response.getWriter().append(e.getMessage());
 		}
 	}
 	
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		doGet(request, response);
 	}
-
 }

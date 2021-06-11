@@ -1,7 +1,6 @@
 /*
 
 */
-
 (function ($) {
 
   "use strict";
@@ -167,16 +166,16 @@
         '<div class="modal fade" id="' + idCartModal + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">' +
         '<div class="modal-dialog" role="document">' +
         '<div class="modal-content">' +
-        '<div class="modal-header">' +
-        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+        '<div class="modal-header">' +        
         '<h5 class="modal-title" id="myModalLabel"> &nbsp; Meu carrinho</h5>' +
+        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
         '</div>' +
         '<div class="modal-body">' +
         '<table class="table table-hover table-responsive" id="' + idCartTable + '"></table>' +
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>' +
-        '<button type="button" class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</button>' +
+        '<a class="btn btn-primary" id="' + idCheckoutCart + '">Confirmar</a>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -197,8 +196,8 @@
           '<td>' + this.name + '</td>' +
           '<td title="Unit Price">$' + this.price + '</td>' +
           '<td title="Quantity"><input type="number" min="1" style="width: 70px;" class="' + classProductQuantity + '" value="' + this.quantity + '"/></td>' +
-          '<td title="Total" class="' + classProductTotal + '">$' + total + '</td>' +
-          '<td title="Remove from Cart" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
+          '<td title="Total" class="' + classProductTotal + '">R$' + total + '</td>' +
+          '<td title="Remover do carrinho" class="text-center" style="width: 30px;"><a href="javascript:void(0);" class="btn btn-xs btn-danger ' + classProductRemove + '">X</a></td>' +
           '</tr>'
         );
       });
@@ -209,10 +208,10 @@
         '<td><strong>Total</strong></td>' +
         '<td></td>' +
         '<td></td>' +
-        '<td><strong id="' + idGrandTotal + '">$</strong></td>' +
+        '<td><strong id="' + idGrandTotal + '">R$</strong></td>' +
         '<td></td>' +
         '</tr>'
-        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Your cart is empty</div>'
+        : '<div class="alert alert-danger" role="alert" id="' + idEmptyCartMessage + '">Seu carrinho está vazio</div>'
       );
 
       var discountPrice = options.getDiscountPrice(products);
@@ -223,7 +222,7 @@
           '<td></td>' +
           '<td></td>' +
           '<td></td>' +
-          '<td><strong id="' +  + '">$</strong></td>' +
+          '<td><strong id="' +  + '">R$</strong></td>' +
           '<td></td>' +
           '</tr>'
         );
@@ -247,10 +246,10 @@
       $.each(products, function(){
         total += this.quantity * this.price;
       });
-      $("#" + idGrandTotal).text("$" + total);
+      $("#" + idGrandTotal).text("R$" + total);
     }
     var showDiscountPrice = function(products){
-      $("#" + idDiscountPrice).text("$" + options.getDiscountPrice(products));
+      $("#" + idDiscountPrice).text("R$" + options.getDiscountPrice(products));
     }
 
     /*
@@ -275,7 +274,7 @@
       var id = $(this).closest("tr").data("id");
       var quantity = $(this).val();
 
-      $(this).parent("td").next("." + classProductTotal).text("$" + price * quantity);
+      $(this).parent("td").next("." + classProductTotal).text("R$" + price * quantity);
       ProductManager.updatePoduct(id, quantity);
 
       $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
@@ -298,13 +297,28 @@
       var products = ProductManager.getAllProducts();
       if(!products.length) {
         $("#" + idEmptyCartMessage).fadeTo('fast', 0.5).fadeTo('fast', 1.0);
-        return ;
+        return;
       }
-      updateCart();
-      options.checkoutCart(ProductManager.getAllProducts());
-      ProductManager.clearProduct();
-      $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
-      $("#" + idCartModal).modal("hide");
+      document.location = "./endereco_entrega.jsp";    
+    });
+
+    $("#btn-finalizar-pedido").click(function(){
+
+      var enderecoSelecionado = document.querySelector(".active");
+      if (!enderecoSelecionado) {
+          alert("Selecione ou cadastre um endereço de entrega");
+          return;
+      }
+      $("#myModal").modal("show");                          
+    });
+
+    $(".btn-redirecionar-index").click(function(){
+        updateCart();
+        options.checkoutCart(ProductManager.getAllProducts());
+        ProductManager.clearProduct();
+        $cartBadge.text(ProductManager.getTotalQuantityOfProduct());
+        $("#" + idCartModal).modal("hide"); 
+       document.location = "./index.jsp";
     });
 
     $(document).on('keypress', "." + classProductQuantity, function(evt){
@@ -351,6 +365,5 @@
       new MyCart(this, userOptions);
     });
   }
-
 
 })(jQuery);

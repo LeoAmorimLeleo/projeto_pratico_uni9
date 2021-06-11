@@ -1659,7 +1659,8 @@ textarea.form-control {
 .was-validated :invalid ~ .invalid-tooltip,
 .is-invalid ~ .invalid-feedback,
 .is-invalid ~ .invalid-tooltip {
-  display: block; }
+  display: block;
+  color: #dc3545 }
 
 .was-validated .form-control:invalid, .form-control.is-invalid {
   border-color: #dc3545;

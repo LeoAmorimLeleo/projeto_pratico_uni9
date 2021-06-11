@@ -1,3 +1,11 @@
+<%@page import="model.PizzaDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Pizza"%>
+<%@page import="model.Bebida"%>
+<%@page import="model.BebidaDAO"%>
+<%@page import="model.Sobremesa"%>
+<%@page import="model.SobremesaDAO"%>
+<%@page import="model.UsuarioBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,28 +28,46 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                             <li class="nav-item active"> <a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="./index.jsp#menu">Menu</a>
-                    </li>
                     
-                   
-                    
-                    <li class="nav-item"> <a class="nav-link" href="./login.jsp">Login</a>
-                    </li>
-                    
-                    <li class="nav-item"> <a class="nav-link" href="./registrar.jsp">Registrar-se</a>
-                    </li>
-              
+                    	<%
+							UsuarioBean usuario = (UsuarioBean)session.getAttribute("usuario");
+							if(usuario != null){
+								%>
+								<li class="nav-item active"> 
+									<a class="nav-link" href="./index.jsp">Bem-Vindo - <%=usuario.getNome()%></a>
+								</li>
+								<li class="nav-item">
+                    				<a class="nav-link" href="./index.jsp#menu">Menu</a>
+                    			</li>   
+                    			 <li class="nav-item"> 
+                        		<a class="nav-link" href="./logout.jsp">Sair</a>
+                        	</li>
+						<%} else{
+							%>
+							<li class="nav-item active"> 
+							 	<a class="nav-link" href="./index.jsp">Bem-Vindo<span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+                    				<a class="nav-link" href="./index.jsp#menu">Menu</a>
+                    			</li>
+                    			<li class="nav-item"> 
+                    				<a class="nav-link" href="./login.jsp">Login</a>
+                    			</li>                    
+                    			<li class="nav-item">
+                    				<a class="nav-link" href="./registrar.jsp">Registrar-se</a>
+                    			</li>
+							 
+						<%}	%>                
+                                 
     </nav>
     
     <body>
         <div class="block hero1 my-auto" style="background-image:url(https://cdn.pixabay.com/photo/2015/04/28/21/20/pizza-744405_1280.jpg);">
             <div class="container-fluid text-center">
                  <h1 class="display-2 text-white" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-offset="0">Uni9 Delivery Pizzaria</h1>
+                data-aos-offset="0">Uni9 Delivery de Pizzaria</h1>
                 <p class="lead text-white" data-aos="fade-up" data-aos-duration="1000"
-                data-aos-delay="600">Deliciosos sabores de pizzas, com varias variedade!</p>
+                data-aos-delay="600">Deliciosos sabores de pizzas, com várias variedades!</p>
                 <a
                 href="#menu" class="btn-text lead d-inline-block text-white border-top border-bottom mt-4 pt-1 pb-1"
                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200">Veja o Menu</a>
@@ -51,162 +77,118 @@
         <div class="maincontent">
             <div class="container">
                 <section id="menu">
-                    <div class="block menu1">
-                        <div class="buttons-container"> <a href="#" class="button button--is-active" data-target="pizzaMenu">Pizzas</a>
-                            <a
-                            href="#" class="button" data-target="coffeeMenu">Bebidas</a> <a href="#" class="button" data-target="noodlesMenu">Sobremesas</a>
+                        <div class="buttons-container"> 
+                        <a href="#" class="button button--is-active" data-target="pizzaMenu">Pizzas</a>
+                        <a href="#" class="button" data-target="coffeeMenu">Bebidas</a>
+                        <a href="#" class="button" data-target="noodlesMenu">Sobremesas</a>
+                        
                         </div>
+                        
                         <!-- Start Pizza Menu -->
                         <div class="menu menu--is-visible" id="pizzaMenu" data-aos="fade-up">
-                            <div class="item row align-items-center">
+                        <%
+                        ArrayList<model.Pizza> lista = new ArrayList<model.Pizza>();
+                        try{
+                            PizzaDAO pDAO = new PizzaDAO();
+                            lista = pDAO.getLista();
+                        }catch(Exception ex){
+                            out.print(ex);
+                        }
+                        
+                        for(Pizza p:lista){
+                    	%>
+                     <div class="item row align-items-center">
                                 <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="./img/pizza-1.png">
+                                    <img class="product-img" src="<%=p.getFoto()%>">
                                 </div>
                                 <div class="details col-sm-9">
-                                    <div class="item__header">
-                                         <h3 class="item__title">Cheese Pizza</h3>
- <span class="item__dots"></span>
- <span class="item__price">$29</span>
+                                    <div class="item__header">                                    	
+                                         <h3 class="item__title"><%=p.getSabor()%></h3>
+ 										<span class="item__dots"></span>
+ 										<span class="item__price">R$ <%=p.getValor()%></span>
                                     </div>
-                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                        officia eaque nobis ut.</p>
+                                    <p class="item__description"><%=p.getDescricao()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
-                                    data-id="1" data-name="Cheese Pizza" data-price="29" data-quantity="1"
+                                    data-id="<%=p.getId()%>" data-name="<%=p.getSabor()%>" data-price="<%=p.getValor()%>" data-quantity="1"
                                     data-image="./img/pizza-1.png">Carrinho</button>
                                 </div>
                             </div>
-                            <div class="item row align-items-center">
-                                <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="./img/pizza-2.png">
-                                </div>
-                                <div class="details col-sm-9">
-                                    <div class="item__header">
-                                         <h3 class="item__title">Hot Pastrami</h3>
- <span class="item__dots"></span>
- <span class="item__price">$25</span>
-                                    </div>
-                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                        officia eaque nobis ut.</p>
-                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
-                                    data-id="2" data-name="Hot Pastrami" data-price="25" data-quantity="1"
-                                    data-image="./img/pizza-2.png">Carrinho</button>
-                                </div>
-                            </div>
-                            <div class="item row align-items-center">
-                                <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="./img/pizza-3.png">
-                                </div>
-                                <div class="details col-sm-9">
-                                    <div class="item__header">
-                                         <h3 class="item__title">Classic Pizza</h3>
- <span class="item__dots"></span>
- <span class="item__price">$27</span>
-                                    </div>
-                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                        officia eaque nobis ut.</p>
-                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
-                                    data-id="3" data-name="Classic Pizza" data-price="27" data-quantity="1"
-                                    data-image="./img/pizza-3.png">Carrinho</button>
-                                </div>
-                            </div>
-                            <div class="item row align-items-center">
-                                <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="./img/pizza-4.png">
-                                </div>
-                                <div class="details col-sm-9">
-                                    <div class="item__header">
-                                         <h3 class="item__title">Country Pizza</h3>
- <span class="item__dots"></span>
- <span class="item__price">$26</span>
-                                    </div>
-                                    <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                        officia eaque nobis ut.</p>
-                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
-                                    data-id="4" data-name="Country Pizza" data-price="26" data-quantity="1"
-                                    data-image="./img/pizza-4.png">Carrinho</button>
-                                </div>
-                            </div>
-                        </div>
+                   
+                    	<% } %>  
+                    	</section>						
+                    	                                                  
                         <!-- End Pizza Menu -->
+                        
                         <!-- Start Coffee Menu -->
                         <div class="menu" id="coffeeMenu">
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Cappuccino</h3>
- <span class="item__dots"></span>
- <span class="item__price">$28</span>
+                                        
+                        <%
+                        ArrayList<model.Bebida> lista1 = new ArrayList<model.Bebida>();
+                        try{
+                            BebidaDAO tDAO = new BebidaDAO();
+                            lista1 = tDAO.getLista();
+                        }catch(Exception ex){
+                            out.print(ex);
+                        }
+                        
+                        for(Bebida t:lista1){
+                    	%>          
+                    	       
+                     <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="<%=t.getFoto()%>">
                                 </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Iced Coffee</h3>
- <span class="item__dots"></span>
- <span class="item__price">$27</span>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">                                    	
+                                         <h3 class="item__title"><%=t.getNome()%></h3>
+ 										<span class="item__dots"></span>
+ 										<span class="item__price">R$ <%=t.getValor()%></span>
+                                    </div>
+                                    <p class="item__description"><%=t.getVolume()%></p>
+                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
+                                    data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
+                                    data-image="./img/Coca.png">Carrinho</button>
                                 </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Café Latte</h3>
- <span class="item__dots"></span>
- <span class="item__price">$3</span>
-                                </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Espresso</h3>
- <span class="item__dots"></span>
- <span class="item__price">$4</span>
-                                </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                        </div>
-                        <!-- End Coffee Menu -->
+                            </div>                   
+                    	<% } %>
+                    	</div>                                              
+                        </section>						
+                            <!-- End Coffee Menu -->
                         <!-- Start Noodles Menu -->
+                        
                         <div class="menu" id="noodlesMenu">
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Chicken Noodles</h3>
- <span class="item__dots"></span>
- <span class="item__price">$16</span>
+                                                   <%
+                        ArrayList<model.Sobremesa> lista2 = new ArrayList<model.Sobremesa>();
+                        try{
+                            SobremesaDAO tDAO = new SobremesaDAO();
+                            lista2 = tDAO.getLista();
+                        }catch(Exception ex){
+                            out.print(ex);
+                        }
+                        
+                        for(Sobremesa t:lista2){
+                    	%>          
+                    	       
+                     <div class="item row align-items-center">
+                                <div class="col-sm-3 pr-5">
+                                    <img class="product-img" src="./img/brigadeiro.png" <%=t.getFoto()%>>
                                 </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Egg Noodles</h3>
- <span class="item__dots"></span>
- <span class="item__price">$12</span>
+                                <div class="details col-sm-9">
+                                    <div class="item__header">                                    	
+                                         <h3 class="item__title"><%=t.getNome()%></h3>
+ 										<span class="item__dots"></span>
+ 										<span class="item__price">R$ <%=t.getValor()%></span>
+                                    </div>
+                                    <p class="item__description"><%=t.getDescricao()%></p>
+                                    <button class="btn btn-sm btn-outline-primary my-cart-btn"
+                                    data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
+                                    data-image="./img/brigadeiro.png">Carrinho</button>
                                 </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Veg Noodles</h3>
- <span class="item__dots"></span>
- <span class="item__price">$10</span>
-                                </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                            <div class="item">
-                                <div class="item__header">
-                                     <h3 class="item__title">Chuck Norris Noodles</h3>
- <span class="item__dots"></span>
- <span class="item__price">$20</span>
-                                </div>
-                                <p class="item__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt quos harum
-                                    officia eaque nobis ut.</p>
-                            </div>
-                        </div>
+                            </div>                   
+                    	<% } %>
+                    	</div>                                              
+                        </section>						
+                        
                         <!-- End Noodles Menu -->
                     </div>
                     <!-- End block -->
@@ -214,13 +196,10 @@
                     <script src="./js/mycart-custom.js"></script>
                 </section>
             </div>
-        </div>
         <div class="nav-item my-cart-icon">
             <img src="./img/cart.svg" style="width:20px;"> <span class="badge badge-notify my-cart-badge"> </span>
         </div>
-        <footer class="block footer1 footer text-center">
-            
-        </footer>
+        <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer> 
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
