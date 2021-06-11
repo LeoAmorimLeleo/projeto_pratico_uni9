@@ -63,33 +63,11 @@
             </div>
         </div>
         <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer> 
+         <script src="./js/login.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
-            AOS.init();
-            
-            function autenticar(){        	
-                
-            	var email = document.getElementById("email").value;
-        		var senha = document.getElementById("senha").value;               
-               
-        		var json = {"email":email,"senha":senha}
-                
-        		console.log(json);
-        		
-                $.ajax({
-                    url:"LoginServlet",
-                    data: json,
-                    type: "post",
-                    success: function(resp){
-                    	if(resp == "true"){
-                    		document.location = "./index.jsp";
-                    	}else{
-                    		alert(resp);
-                    	}
-                    }
-                });            
-            }             
+            AOS.init();            
         </script>
         <script src="js/custom-general.js"></script>
     </body>
