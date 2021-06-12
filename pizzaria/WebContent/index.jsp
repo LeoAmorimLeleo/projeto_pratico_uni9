@@ -110,7 +110,7 @@
                                     <p class="item__description"><%=p.getDescricao()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
                                     data-id="<%=p.getId()%>" data-name="<%=p.getSabor()%>" data-price="<%=p.getValor()%>" data-quantity="1"
-                                    data-image="./img/pizza-1.png">Carrinho</button>
+                                    data-image="<%=p.getFoto()%>">Carrinho</button>
                                 </div>
                             </div>
                    
@@ -135,8 +135,8 @@
                     	%>          
                     	       
                      <div class="item row align-items-center">
-                                <div class="col-sm-3 pr-5">
-                                    <img class="product-img" src="<%=t.getFoto()%>">
+                                <div class="col-2 pr-5" style="weight : 20px;">
+                                    <img class="img-fluid" style="height: 250px;" src="<%=t.getFoto()%>">
                                 </div>
                                 <div class="details col-sm-9">
                                     <div class="item__header">                                    	
@@ -147,7 +147,7 @@
                                     <p class="item__description"><%=t.getVolume()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
                                     data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
-                                    data-image="./img/Coca.png">Carrinho</button>
+                                    data-image="<%=t.getFoto()%>">Carrinho</button>
                                 </div>
                             </div>                   
                     	<% } %>
@@ -182,7 +182,7 @@
                                     <p class="item__description"><%=t.getDescricao()%></p>
                                     <button class="btn btn-sm btn-outline-primary my-cart-btn"
                                     data-id="<%=t.getId()%>" data-name="<%=t.getNome()%>" data-price="<%=t.getValor()%>" data-quantity="1"
-                                    data-image="./img/brigadeiro.png">Carrinho</button>
+                                    data-image="<%=t.getFoto()%>">Carrinho</button>
                                 </div>
                             </div>                   
                     	<% } %>
