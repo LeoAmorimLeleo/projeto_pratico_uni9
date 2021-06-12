@@ -68,7 +68,7 @@
         <div class="container"> 
           <div class="row justify-content-around">
             <div class="col-4">
-              <form action="UsrServlet" method="GET">
+              <form method="POST" id="form-cadastrar-endereco">
                 <h3 class="mb-4 text-center">Cadastrar novo endereço</h3>                                           
                 <div class="form-group">
                     <input name="cep" type="text" class="form-control"  id="cep" aria-describedby="cep"
@@ -84,7 +84,7 @@
                 </div>                             
                 <div class="form-group">
                     <input name="numero" type="text" class="form-control" id="numero"
-                    placeholder="Numero" required="">
+                    placeholder="Número">
                 </div>                             
                 <div class="form-group">
                     <input name="complemento" type="text" class="form-control" id="complemento"
@@ -123,7 +123,7 @@
 				    <option value="SE">Sergipe</option>
 				    <option value="TO">Tocantins</option>
 				</select>
-                <button type="button" class="btn btn-dark btn-round btn-block" onClick="salvar_dados()">Registrar</button> 
+                <button type="submit" class="btn btn-dark btn-round btn-block">Registrar</button> 
             </form>       
         </div>
         <div class="col-4">
@@ -160,45 +160,15 @@
     </div>   
 <footer class="block footer1 footer text-center">©2020 - UNI9 Delivery de Pizza - Todos os direitos reservados</footer>    
 <script src="./js/mycart.js"></script>
+<script src="./js/endereco_entrega.js"></script>
 <script src="./js/buscar-endereco-por-cep.js"></script>
 <script src="./js/mycart-custom.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 <script>
-    AOS.init();
-
-    function salvar_dados(){        	
-
-        var bairro = document.getElementById("bairro").value;
-        var rua = document.getElementById("rua").value;
-        var numero = document.getElementById("numero").value;
-        var complemento = document.getElementById("complemento").value;
-        var cep = document.getElementById("cep").value;
-        var cidade = document.getElementById("cidade").value;
-        var estado = document.getElementById("estado").value;
-
-
-        var json = 
-        {"bairro":bairro,"rua":rua,"numero":numero,"complemento":complemento,"cep":cep,"cidade":cidade,"estado":estado};
-
-        $.ajax({
-            url:"EnderecoServlet",
-            data: json,
-            type: "post",
-            success: function(resp){
-            	if(resp == "true"){
-            		document.location.reload(true);
-            	}else{
-            		alert(resp);
-            	}
-           }
-       });            
-    }   
-    
-    function finalizar_pedido(){
-    	alert("Obrigado! O seu pedido está sendo preprado e logo chegará até você!");		   	
-    }
+    AOS.init();    
 </script>
 <script src="js/custom-general.js"></script>
 <script src="./js/mascaras.js"></script>

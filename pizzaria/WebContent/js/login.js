@@ -16,5 +16,7 @@ function autenticar(){
 		        }
         	}
        });        
+	}else{
+		alert("Digite e-mail e senha");
 	}                    
 }             
